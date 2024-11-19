@@ -190,7 +190,7 @@ def getAvailableCoordinates(n):
     pass
 
 
-def checkMatchUpdateBoard(assignmentBoard, stateBoard, currentSelection, matchFound):
+def checkMatchUpdateBoard(assignmentBoard, stateBoard, currentSelection):
     """
     Checks if the two selections are matching and if matching updates the state board
     
