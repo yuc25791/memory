@@ -241,28 +241,30 @@ def leaderboards(gameLogFile):
 
     NOTE: There should be seperate leaderboards per each game size mode
     NOTE: The leaderboard contains player name, score, date achieved
+    NOTE: Incorporate tiebreak mechanism 
     """
 
     # return 1
     pass
 
 
-def updateLeaderboard(name, score, folderName):
+def updateLeaderboard(name, score, n, gameLogFolderName):
     """
-    Adds the user to the leaderboard if sufficient points are met
-    Creates a leaderboard file with the name and score if it does not exist
+    Determines if the user is added to the leaderboard
 
     Parameters:
         name (str): Name of the player
         score (int): Final score / total moves after the game is finished
-        folderName (str): Location of the folder containing the leaderboards
+        n (int): Size of the board
+        gameLogFile (str): Location of the folder containing the leaderboards
     Returns:
         True, if user is added to leaderboard
         False, if user does not meet requirements for leaderboard
-
-    NOTE: Assign score to the appropriate game size leaderboard
-    NOTE: Incorporate tiebreak mechanism (e.g. if tie, overwrite the older one)
     """
+    # Create a ranking of the games
+    # Determine if the latest game is part of the leaderboard - meets ranking required for the leaderboard
+    # NOTE: Consider tiebreak mechanism
+
     pass
 
 
@@ -470,7 +472,15 @@ def playGame(type, name):
     """
 
     # Initialize expected folder name
-    leaderboardsFolderName = 'leaderboards'
+    
+    # TODO: (Test if folder is created)
+    # Create a folder called 'gameLog' if it does not exist
+    currentDir = os.getcwd()
+    finalDir = os.path.join(currentDir, r'gameLog')
+    if not os.path.exists(finalDir):
+        os.makedirs('gameLog')
+
+    gameLogsFolderName = 'gameLog'
     savedFilesFolderName = 'save'
 
     # CASE 1: New game
@@ -569,7 +579,8 @@ def playGame(type, name):
             # Check if game is over / arrived in terminal state
             if gameOver(stateBoard) == True:
                 print(f"Your final score is {totalMovesToScore(totalMoves)}")
-                if updateLeaderboard(name, totalMovesToScore(totalMoves), leaderboardsFolderName) == True:
+                recordGameLog(name, totalMovesToScore(totalMoves), n)
+                if updateLeaderboard(name, totalMovesToScore(totalMoves), n, gameLogsFolderName) == True:
     
                     clearScreen()
                     congratsScreen(name)
@@ -629,7 +640,8 @@ def playGame(type, name):
             # Check if game is over / arrived in terminal state
             if gameOver(stateBoard) == True:
                 print(f"Your final score is {totalMovesToScore(totalMoves)}")
-                if updateLeaderboard(name, totalMovesToScore(totalMoves), leaderboardsFolderName) == True:
+                recordGameLog(name, totalMovesToScore(totalMoves), n)
+                if updateLeaderboard(name, totalMovesToScore(totalMoves), n, gameLogsFolderName) == True:
     
                     clearScreen()
                     congratsScreen(name)
@@ -690,7 +702,8 @@ def playGame(type, name):
             # Check if game is over / arrived in terminal state
             if gameOver(stateBoard) == True:
                 print(f"Your final score is {totalMoves}")
-                if updateLeaderboard(name, totalMoves, leaderboardsFolderName) == True:
+                recordGameLog(name, totalMovesToScore(totalMoves), n)
+                if updateLeaderboard(name, totalMovesToScore(totalMoves), n, gameLogsFolderName) == True:
     
                     clearScreen()
                     congratsScreen(name)
