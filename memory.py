@@ -229,13 +229,13 @@ def mainMenu():
     pass
 
 
-def leaderboards(folderName):
+def leaderboards(gameLogFile):
     """
-    Reads leaderboard from file and displays the leaderboard
-    If leaderboard folder and file does not exist, create one and display an empty leaderboard
+    Creates leaderboards based from game logs and displays the leaderboard
+    If the game logs file does not exist, display an empty leaderboard
 
     Parameters:
-        folderName (str): Location of the folder containing the leaderboards
+        gameLogFile (str): Location of the game log / records file
     Returns:
         1 (int): If user wants to exit the leaderboard back to the menu
 
