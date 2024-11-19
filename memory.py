@@ -110,7 +110,7 @@ def displayBoard(assignmentBoard, stateBoard, currentSelection):
     pass
 
 
-def selectCard(assignmentBoard, stateBoard, currentSelection, totalMoves):
+def selectCard(assignmentBoard, stateBoard, currentSelection):
     """
     Asks the user for a valid card
 
@@ -412,7 +412,7 @@ def updateNameListFile(currentNameList):
 
 def recordGameLog(currrentName, score, n):
     """
-    Stores completed game data into a csv file with columns [name, score, gameType, datetime completed]
+    Stores completed game data into a csv file with columns [id, name, score, gameType, datetime completed]
 
     If game log file does not exist, create one and add the first entry
 
