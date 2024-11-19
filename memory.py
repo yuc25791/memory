@@ -217,9 +217,6 @@ def mainMenu():
     Prints a menu interface that asks the user if they want to start a new game / or continue a previous game / check leaderboards
     Triggers an error if there is no saved game found if user chooses to continue a previous game
 
-    Returns 1 if Starts a new game, 2 if user chooses to continue a previous game, 
-    3 if user wants to check the leaderboards, 4 if user wants to exit
-
     Parameters:
         None
     Returns:
@@ -399,6 +396,22 @@ def updateNameListFile(currentNameList):
 
     Parameters:
         currentNameList (list): Current username list (that will overwrite the current username list file)   
+    Returns:
+        None
+    """
+    pass
+
+
+def recordGameLog(currrentName, score, n):
+    """
+    Stores completed game data into a csv file with columns [name, score, gameType, datetime completed]
+
+    If game log file does not exist, create one and add the first entry
+
+    Parameters:
+        currentName (str): Current username of the player
+        score (int): Score by the user
+        n (int): Size of the board
     Returns:
         None
     """
