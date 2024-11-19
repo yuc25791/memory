@@ -323,7 +323,13 @@ def setUserName(currentUserName):
         currentUserName (str): Current username of the player    
     Returns:
         updatedUserName (str): Updated username of the player
+
+    NOTE: Limit the number of users to be made
+    NOTE: Create warning that the user's records will be deleted if the user is deleted
     """
+
+    # TODO: If user is deleted, update game log
+    # updateGameLog(currentNameList)
 
     # TODO: Update user name list file
     # updateNameListFile(currentNameList)
@@ -415,6 +421,24 @@ def recordGameLog(currrentName, score, n):
     Returns:
         None
     """
+    pass
+
+
+def updateGameLog(currentNameList):
+    """
+    If a user is deleted, updates the game log file (deletes all log entries of deleted user)
+    After updating, reorganizes the log such that there are no empty rows
+
+    Parameters:
+        currentNameList (list): Current username list
+    Returns:
+        None
+    """
+    # Check for deleted user/s: Compare name in the log with those not in the name list
+
+    # Delete log entries of deleted user
+
+    # Reorganizes log such that there are no empty rows
     pass
 
 
