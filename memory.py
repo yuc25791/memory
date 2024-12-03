@@ -191,25 +191,27 @@ def getAvailableCoordinates(n):
 
 
 def checkMatchUpdateBoard(assignmentBoard, stateBoard, currentSelection):
-    """
-    Checks if the two selections are matching and if matching updates the state board
-    
-    Returns the updated assignmentBoard and stateBoard
-
-
-    Parameters:
-        assignmentBoard (list): multidimensional list of size n x n containing the assignments
-        stateBoard (list): multidimensional list of size n x n containing the state
-        currentSelection (list): list containing the 2 currently selected cards of the player
-    Returns:
-        Updated assignmentBoard and stateBoard
-        matchFound (bool): True if a match is found, False otherwise
-
-    TODO: Validate that current selection is of size 2
-    """
-
-    # return assignmentBoard, stateBoard
-    pass
+# get the coordinates of the first and second selection from the coordinateToIndexMap
+    sel1_coor = coordinateToIndexMap.get(currentSelection[0]) 
+    sel2_coor = coordinateToIndexMap.get(currentSelection[1])
+#assign slice the coordinate of selection 1 and selection 2 into individual variables
+    sel1_coor_x = sel1_coor[0]
+    sel1_coor_y = sel1_coor[1]
+    sel2_coor_x = sel2_coor[0]
+    sel2_coor_y = sel2_coor[1]
+#extract the assigned value of selection 1 and selection 2
+    selection1 = assignmentBoard[sel1_coor_x][sel1_coor_y]
+    selection2 = assignmentBoard[sel2_coor_x][sel2_coor_y]
+#compare if selection 1 and selection 2 
+    if selection1 == selection2:
+        
+#if selection 1 and 2 matches, update the stateBoard for the selection to True
+        stateBoard[sel1_coor_x][sel1_coor_y] = True
+        stateBoard[sel2_coor_x][sel2_coor_y] = True
+        return stateBoard
+#if the two selection doest not match, return the unaltered stateBoard   
+    else:
+        return stateBoard
 
 
 def mainMenu():
